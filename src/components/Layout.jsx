@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
         </div>
 
         {/* Navigation Links */}
-        <nav className="flex space-x-6">
+        {/* <nav className="flex space-x-6">
           <a href="#" className="font-semibold text-black">
             Valores
           </a>
@@ -26,30 +26,33 @@ const Layout = ({ children }) => {
           <a href="#" className="font-semibold text-black">
             Resume
           </a>
-        </nav>
+        </nav> */}
 
-        {/* Social Icons */}
-        <div className="flex space-x-4">
-          <a href="#">
-            <RiTiktokLine size={40} />
-          </a>
-          <a href="#">
-            <IoLogoLinkedin size={43} />
-          </a>
-          <a href="#">
-            <FaInstagram size={40} />
-          </a>
-        </div>
+        <div className="flex items-center space-x-4">
+          {/* Social Icons */}
+          <div className="flex space-x-4">
+            <a href="#">
+              <RiTiktokLine size={40} />
+            </a>
+            <a href="#">
+              <IoLogoLinkedin size={43} />
+            </a>
+            <a href="#">
+              <FaInstagram size={40} />
+            </a>
+          </div>
 
-        {/* Hire Me Button */}
-        <div className="cursor-pointer">
-          <a
-            href="#"
-            className="bg-black text-white font-semibold py-2 px-4 rounded-full"
-          >
-            Hablemos!
-          </a>
+          {/* Hire Me Button */}
+          <div className="cursor-pointer">
+            <a
+              href="#"
+              className="bg-black text-white font-semibold py-2 px-4 rounded-full"
+            >
+              Hablemos!
+            </a>
+          </div>
         </div>
+        
       </header>
 
       <main className="flex-grow">{children}</main>
