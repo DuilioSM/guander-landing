@@ -102,9 +102,9 @@ const ExplosionAnimation = () => {
       <p ref={subtitleRef} className="text-xl text-center text-[#5e17eb] mb-12">
         Encuentra a tu cliente ideal y recibe insights para <span className="font-bold">crecer 4x</span>
       </p>
-      <button ref={buttonRef} className="bg-[#5e17eb] text-white text-xl font-semibold px-6 py-3 rounded-full mb-8">
+      <a ref={buttonRef} href="https://calendly.com/elias-guander" className="bg-[#5e17eb] text-white text-xl font-semibold px-6 py-3 rounded-full mb-8">
         Consultoría Gratis
-      </button>
+      </a>
       <div className="text-xl font-bold text-[#5e17eb] mt-12">
        +70 Startups creciendo con Guander
       </div>

@@ -31,13 +31,13 @@ const Layout = ({ children }) => {
         <div className="flex items-center space-x-4">
           {/* Social Icons */}
           <div className="flex space-x-4">
-            <a href="#">
+            <a href="https://www.instagram.com/guander.mx/">
               <RiTiktokLine size={40} />
             </a>
-            <a href="#">
+            <a href="https://www.instagram.com/guander.mx/">
               <IoLogoLinkedin size={43} />
             </a>
-            <a href="#">
+            <a href="https://www.instagram.com/guander.mx/">
               <FaInstagram size={40} />
             </a>
           </div>
@@ -45,7 +45,7 @@ const Layout = ({ children }) => {
           {/* Hire Me Button */}
           <div className="cursor-pointer">
             <a
-              href="#"
+              href="https://calendly.com/elias-guander"
               className="bg-black text-white font-semibold py-2 px-4 rounded-full"
             >
               Hablemos!
