@@ -96,13 +96,13 @@ const ExplosionAnimation = () => {
   return (
     <div ref={containerRef} className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden p-8 pt-48">
       <div className="z-40">
-      <h1 ref={titleRef} className="text-4xl font-bold text-[#5e17eb] mb-4">
+      <h1 ref={titleRef} className="text-7xl font-bold text-[#5e17eb] mb-4">
         Explota tu startup <span role="img" aria-label="explosion">💥</span>
       </h1>
-      <p ref={subtitleRef} className="text-lg text-center text-[#5e17eb] mb-6">
+      <p ref={subtitleRef} className="text-xl text-center text-[#5e17eb] mb-12">
         Encuentra a tu cliente ideal y recibe insights para <span className="font-bold">crecer 4x</span>
       </p>
-      <button ref={buttonRef} className="bg-[#5e17eb] text-white text-lg font-semibold px-6 py-3 rounded-full mb-8">
+      <button ref={buttonRef} className="bg-[#5e17eb] text-white text-xl font-semibold px-6 py-3 rounded-full mb-8">
         Consultoría Gratis
       </button>
       <div className="text-xl font-bold text-[#5e17eb] mt-12">
@@ -115,7 +115,7 @@ const ExplosionAnimation = () => {
           ref={el => itemRefs.current[index] = el}
           src={url}
           alt={`Item ${index + 1}`}
-          className="absolute w-12 h-12 object-cover rounded-md"
+          className="absolute w-20 h-20 object-cover rounded-md"
         />
       ))}
     </div>

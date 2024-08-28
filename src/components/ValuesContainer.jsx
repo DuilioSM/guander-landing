@@ -72,7 +72,7 @@ const ValuesContainer = () => {
   return (
     <div ref={containerRef} className="container mx-auto px-4 py-8">
       <h2 className="text-3xl font-bold mb-8 bg-yellow-200 inline-block px-4 py-2 rounded-lg">
-        ¿Cómo lo hacemos?
+        Creemos que el valor se crea con:
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project, index) => (
