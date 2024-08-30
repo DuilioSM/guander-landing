@@ -79,7 +79,7 @@ const Layout = ({ children }) => {
               Instagram
             </a>
             <a
-              href="https://www.instagram.com/guander.mx/"
+              href="https://www.linkedin.com/company/guander"
               className="flex items-center py-2"
             >
               <IoLogoLinkedin size={24} className="mr-2" />
@@ -97,7 +97,7 @@ const Layout = ({ children }) => {
         <div className="md:flex hidden items-center space-x-4">
           {/* Social Icons */}
           <div className="flex space-x-4">
-            <a href="https://www.instagram.com/guander.mx/">
+            <a href="https://www.linkedin.com/company/guander">
               <IoLogoLinkedin size={43} />
             </a>
             <a href="https://www.instagram.com/guander.mx/">
