@@ -83,7 +83,7 @@ const StackedCards = () => {
           ref={(el) => (cardsRef.current[index] = el)}
           className={`w-full max-w-4xl p-6 rounded-lg shadow-lg flex flex-col ${project.backgroundColor} ${project.borderColor} border-2`}
         >
-          <div className="flex items-start mb-6">
+          <div className="flex items-center justify-center">
             <img
               src={project.logoUrl}
               alt={project.title}

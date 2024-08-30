@@ -32,7 +32,7 @@ const OurProcess = () => {
   return (
     <div className="relative flex flex-col items-center py-16 bg-gray-50">
       {/* Timeline line */}
-      <div className="absolute w-1 bg-blue-500 h-full top-0 left-1/2 transform -translate-x-1/2"></div>
+      <div className="absolute w-1 bg-[#5e17eb] h-full top-0 left-1/2 transform -translate-x-1/2"></div>
 
       {/* Timeline steps */}
       <div className="flex flex-col space-y-24">
@@ -42,7 +42,7 @@ const OurProcess = () => {
             <img src={empathy} alt="Empatizamos con tus clientes" className="w-40 h-40 object-cover"/>
           </div>
           <div className="w-1/2 pl-10">
-            <div className="bg-white p-8 rounded-lg shadow-lg border-l-8 border-blue-500">
+            <div className="bg-white p-8 rounded-lg shadow-lg border-l-8 border-[#5e17eb]">
               <h2 className="text-3xl font-bold text-gray-800">Empatizamos con tus clientes</h2>
               <p className="mt-4 text-lg text-gray-600">Comprendemos a fondo las necesidades y deseos de tus clientes para ofrecer soluciones que realmente importan.</p>
             </div>
@@ -55,7 +55,7 @@ const OurProcess = () => {
             <img src={kpi} alt="Entendemos tus KPI’s importantes" className="w-40 h-40 object-cover "/>
           </div>
           <div className="w-1/2 pr-10 order-1">
-            <div className="bg-white p-8 rounded-lg shadow-lg border-r-8 border-blue-500">
+            <div className="bg-white p-8 rounded-lg shadow-lg border-r-8 border-[#5e17eb]">
               <h2 className="text-3xl font-bold text-gray-800">Entendemos tus KPI’s importantes</h2>
               <p className="mt-4 text-lg text-gray-600">Nos enfocamos en los indicadores clave que impulsan el éxito de tu negocio.</p>
             </div>
@@ -68,7 +68,7 @@ const OurProcess = () => {
             <img src={exp} alt="Experimentar para encontrar el producto ganador" className="w-40 h-40 object-cover "/>
           </div>
           <div className="w-1/2 pl-10">
-            <div className="bg-white p-8 rounded-lg shadow-lg border-l-8 border-blue-500">
+            <div className="bg-white p-8 rounded-lg shadow-lg border-l-8 border-[#5e17eb]">
               <h2 className="text-3xl font-bold text-gray-800">Experimentar para encontrar el producto ganador</h2>
               <p className="mt-4 text-lg text-gray-600">Probamos y refinamos constantemente para descubrir la mejor versión de tu producto.</p>
             </div>

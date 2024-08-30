@@ -86,13 +86,6 @@ const Layout = ({ children }) => {
               LinkedIn
             </a>
             <a
-              href="https://www.instagram.com/guander.mx/"
-              className="flex items-center py-2"
-            >
-              <RiTiktokLine size={24} className="mr-2" />
-              TikTok
-            </a>
-            <a
               href="https://calendly.com/elias-guander"
               className="mt-5 flex items-center py-2 bg-black text-white text-center rounded-full justify-center"
             >
@@ -104,9 +97,6 @@ const Layout = ({ children }) => {
         <div className="md:flex hidden items-center space-x-4">
           {/* Social Icons */}
           <div className="flex space-x-4">
-            <a href="https://www.instagram.com/guander.mx/">
-              <RiTiktokLine size={40} />
-            </a>
             <a href="https://www.instagram.com/guander.mx/">
               <IoLogoLinkedin size={43} />
             </a>

@@ -150,7 +150,7 @@ const ExplosionAnimation = () => {
   const textRef = useRef(null);
 
   useEffect(() => {
-    const words = ["Startups", "Empresas", "Proyectos"];
+    const words = ["Startups", "PyMES", "Empresas"];
     let wordIndex = 0;
 
     const changeWord = () => {
@@ -176,10 +176,10 @@ const ExplosionAnimation = () => {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden p-8 pt-48"
+      className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden p-8 pt-40"
     >
       <div className="z-40">
-        <h1 ref={titleRef} className="text-9xl font-bold text-[#5e17eb] mb-4">
+        <h1 ref={titleRef} className="text-8xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-[#5e17eb] mb-12">
           Explota tu startup
           <span role="img" aria-label="explosion">
             💥
@@ -187,7 +187,7 @@ const ExplosionAnimation = () => {
         </h1>
         <p
           ref={subtitleRef}
-          className="text-xl text-center text-[#5e17eb] mb-12"
+          className="text-3xl text-center text-[#5e17eb] mb-12"
         >
           El co-piloto que <span className="font-bold">crece</span> tu{" "}
           <span className="font-bold">startup</span>
@@ -199,8 +199,8 @@ const ExplosionAnimation = () => {
         >
           Consultoría Gratis
         </a>
-        <div className="z-40 text-xl font-bold text-[#5e17eb] mt-12">
-          +70 <span ref={textRef}>Startups</span> creciendo con Guander
+        <div className="z-40 text-xl font-light text-[#5e17eb] mt-12">
+          +10 <span className="font-bold" ref={textRef}>Startups</span> creciendo con Guander
         </div>
       </div>
       {imageUrls.map((url, index) => (
