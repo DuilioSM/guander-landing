@@ -30,7 +30,12 @@ const OurProcess = () => {
   }, []);
 
   return (
-    <div className="relative flex flex-col items-center py-16 bg-gray-50">
+    <div className='bg-gray-50'>
+    <h2 className="text-3xl font-bold my-12 bg-yellow-200 inline-block px-4 py-2 rounded-lg">
+        Nuestra salsa secreta
+      </h2>
+    <div className="relative flex flex-col items-center py-16 ">
+     
       {/* Timeline line */}
       <div className="absolute w-1 bg-[#5e17eb] h-full top-0 left-1/2 transform -translate-x-1/2"></div>
 
@@ -75,6 +80,7 @@ const OurProcess = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

@@ -77,6 +77,9 @@ const StackedCards = () => {
 
   return (
     <div className="relative h-screen flex items-center justify-center flex-col space-y-8 p-6">
+      <h2 className="text-3xl font-bold mb-8 bg-yellow-200 inline-block px-4 py-2 rounded-lg">
+        Creemos que el valor se crea con:
+      </h2>
       {projects.map((project, index) => (
         <div
           key={index}
