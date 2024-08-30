@@ -14,23 +14,23 @@ const ValuesContainer = () => {
   useEffect(() => {
     const cards = containerRef.current.querySelectorAll(".value-card");
 
-    gsap.fromTo(
-      cards,
-      { opacity: 0, y: 50 },
-      {
+    gsap.set(cards, { opacity: 0, scale: 0.8 }); // Comenzar con las tarjetas pequeñas y transparentes
+
+    cards.forEach((card, index) => {
+      gsap.to(card, {
         opacity: 1,
-        y: 0,
+        scale: 1,
+        y: index * -40, // Apilar las tarjetas una sobre otra
         duration: 1,
-        stagger: 0.2,
         ease: "power2.out",
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 80%",
-          end: "bottom 20%",
-          toggleActions: "play none none none",
+          start: `top+=${index * 200} top`,
+          end: "+=200",
+          scrub: true,
         },
-      }
-    );
+      });
+    });
   }, []);
 
   const projects = [
@@ -70,17 +70,22 @@ const ValuesContainer = () => {
   ];
 
   return (
-    <div ref={containerRef} className="container mx-auto px-4 py-8">
+    <div ref={containerRef} className="w-full mx-auto py-8">
       <h2 className="text-3xl font-bold mb-8 bg-yellow-200 inline-block px-4 py-2 rounded-lg">
         Creemos que el valor se crea con:
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project, index) => (
-          <ValueCard key={index} className="value-card" {...project} />
-        ))}
-      </div>
+      <div className="">
+      {projects.map((project, index) => (
+        <ValueCard
+          key={index}
+          index={index}
+          {...project}
+        />
+      ))}
+    </div>
     </div>
   );
 };
 
 export default ValuesContainer;
+

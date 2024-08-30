@@ -1,14 +1,18 @@
 import "./App.css";
 import ExplosionAnimation from "./components/ExplosionAnimation";
 import Layout from "./components/Layout";
-import ValuesContainer from "./components/ValuesContainer";
+import OurProcess from "./components/OurProcess";
+import StackedCards from "./components/StackedCards";
+// import ValuesContainer from "./components/ValuesContainer";
 
 function App() {
 
   return (
     <Layout>
       <ExplosionAnimation/>
-      <ValuesContainer/>
+      <StackedCards/>
+      {/* <ValuesContainer/> */}
+      <OurProcess/>
     </Layout>
   );
 }

@@ -11,18 +11,10 @@ const ExplosionAnimation = () => {
   const containerRef = useRef(null);
   const titleRef = useRef(null);
   const itemRefs = useRef([]);
-
   const subtitleRef = useRef(null);
   const buttonRef = useRef(null);
 
-  const imageUrls = [
-    dulas,
-    gg,
-    hkp,
-    sanea,
-    unicorn,
-    whisper,
-  ];
+  const imageUrls = [dulas, gg, hkp, sanea, unicorn, whisper];
 
   useEffect(() => {
     const title = titleRef.current;
@@ -40,15 +32,19 @@ const ExplosionAnimation = () => {
         let newPos;
         do {
           const angle = Math.random() * Math.PI * 2;
-          // const radius = gsap.utils.random(150, 250);
           const radius = gsap.utils.random(250, 400);
           newPos = {
             x: Math.cos(angle) * radius,
             y: Math.sin(angle) * radius,
           };
-        } while (positions.some(pos => 
-          Math.sqrt(Math.pow(pos.x - newPos.x, 2) + Math.pow(pos.y - newPos.y, 2)) < minDistance
-        ));
+        } while (
+          positions.some(
+            (pos) =>
+              Math.sqrt(
+                Math.pow(pos.x - newPos.x, 2) + Math.pow(pos.y - newPos.y, 2)
+              ) < minDistance
+          )
+        );
         positions.push(newPos);
       }
       return positions;
@@ -67,52 +63,150 @@ const ExplosionAnimation = () => {
       .to(button, { opacity: 1, scale: 1 }, "-=0.5");
 
     // Aparición de las imágenes alrededor del título
-    tl.to(items, { 
-      opacity: 1, 
-      scale: 1, 
-      stagger: 0.1,
-      x: () => gsap.utils.random(-30, 30),
-      y: () => gsap.utils.random(-30, 30),
-    }, "-=0.5");
+    tl.to(
+      items,
+      {
+        opacity: 1,
+        scale: 1,
+        stagger: 0.1,
+        x: () => gsap.utils.random(-30, 30),
+        y: () => gsap.utils.random(-30, 30),
+      },
+      "-=0.5"
+    );
 
     tl.add("preExplosion", "+=0.5");
 
+    tl.to(
+      items,
+      {
+        duration: 1.5,
+        scale: () => gsap.utils.random(0.8, 1.2),
+        x: (index) => finalPositions[index].x,
+        y: (index) => finalPositions[index].y,
+        rotation: () => gsap.utils.random(-350, 30),
+        ease: "power2.out",
+        stagger: {
+          from: "center",
+          amount: 0.5,
+        },
+      },
+      "preExplosion"
+    );
+
+    // Organizar en una fila centrada
+    const rowWidth = numItems * 120;
+    const startX = -(rowWidth / 2 - 60);
+
+    tl.to(
+      items,
+      {
+        duration: 1,
+        x: (index) => startX + index * 120,
+        y: 250,
+        scale: 1,
+        rotation: 0,
+        ease: "power3.inOut",
+        stagger: 0.1,
+      },
+      "+=0.5"
+    );
+
+    // Iniciar el scroll infinito con efecto de desvanecimiento
     tl.to(items, {
-      duration: 1.5,
-      scale: () => gsap.utils.random(0.8, 1.2),
-      x: (index) => finalPositions[index].x,
-      y: (index) => finalPositions[index].y,
-      rotation: () => gsap.utils.random(-350, 30),
-      ease: "power2.out",
-      stagger: {
-        from: "center",
-        amount: 0.5
-      }
-    }, "preExplosion");
+      x: `+=${120 * numItems}`, // Mueve los elementos hacia la derecha
+      repeat: -1,
+      duration: 20,
+      ease: "linear",
+      modifiers: {
+        x: gsap.utils.unitize(
+          (x) => (parseFloat(x) % (120 * numItems)) - rowWidth / 2
+        ),
+      },
+      onUpdate: () => {
+        items.forEach((item, i) => {
+          const xPosition = parseFloat(gsap.getProperty(item, "x"));
+          const distanceFromCenter = Math.abs(xPosition);
+          const fadeDistance = 200; // Distancia en la que comienza a desvanecerse
+          if (distanceFromCenter > rowWidth / 2 - fadeDistance) {
+            const opacity = gsap.utils.mapRange(
+              rowWidth / 2 - fadeDistance,
+              rowWidth / 2,
+              1,
+              0,
+              distanceFromCenter
+            );
+            gsap.set(item, { opacity });
+          } else {
+            gsap.set(item, { opacity: 1 });
+          }
+        });
+      },
+    });
 
     return () => tl.kill();
   }, []);
 
+  const textRef = useRef(null);
+
+  useEffect(() => {
+    const words = ["Startups", "Empresas", "Proyectos"];
+    let wordIndex = 0;
+
+    const changeWord = () => {
+      wordIndex = (wordIndex + 1) % words.length;
+
+      gsap.to(textRef.current, {
+        y: -30,
+        opacity: 0,
+        duration: 0.5,
+        onComplete: () => {
+          textRef.current.innerText = words[wordIndex];
+          gsap.to(textRef.current, { y: 30, opacity: 0, duration: 0 });
+          gsap.to(textRef.current, { y: 0, opacity: 1, duration: 0.5 });
+        },
+      });
+    };
+
+    const interval = setInterval(changeWord, 2000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div ref={containerRef} className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden p-8 pt-48">
+    <div
+      ref={containerRef}
+      className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden p-8 pt-48"
+    >
       <div className="z-40">
-      <h1 ref={titleRef} className="text-7xl font-bold text-[#5e17eb] mb-4">
-        Explota tu startup <span role="img" aria-label="explosion">💥</span>
-      </h1>
-      <p ref={subtitleRef} className="text-xl text-center text-[#5e17eb] mb-12">
-        Encuentra a tu cliente ideal y recibe insights para <span className="font-bold">crecer 4x</span>
-      </p>
-      <a ref={buttonRef} href="https://calendly.com/elias-guander" className="bg-[#5e17eb] text-white text-xl font-semibold px-6 py-3 rounded-full mb-8">
-        Consultoría Gratis
-      </a>
-      <div className="text-xl font-bold text-[#5e17eb] mt-12">
-       +70 Startups creciendo con Guander
-      </div>
+        <h1 ref={titleRef} className="text-9xl font-bold text-[#5e17eb] mb-4">
+          Explota tu startup
+          <span role="img" aria-label="explosion">
+            💥
+          </span>
+        </h1>
+        <p
+          ref={subtitleRef}
+          className="text-xl text-center text-[#5e17eb] mb-12"
+        >
+          El co-piloto que <span className="font-bold">crece</span> tu{" "}
+          <span className="font-bold">startup</span>
+        </p>
+        <a
+          ref={buttonRef}
+          href="https://calendly.com/elias-guander"
+          className="bg-[#5e17eb] text-white text-xl font-semibold px-6 py-3 rounded-full mb-8"
+        >
+          Consultoría Gratis
+        </a>
+        <div className="z-40 text-xl font-bold text-[#5e17eb] mt-12">
+          +70 <span ref={textRef}>Startups</span> creciendo con Guander
+        </div>
       </div>
       {imageUrls.map((url, index) => (
         <img
           key={index}
-          ref={el => itemRefs.current[index] = el}
+          ref={(el) => (itemRefs.current[index] = el)}
           src={url}
           alt={`Item ${index + 1}`}
           className="absolute w-20 h-20 object-cover rounded-md"
